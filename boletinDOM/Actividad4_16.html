@@ -1,0 +1,35 @@
+<!-- Crea un documento HTML que permita seleccionar el tamaño 
+ de fuente de los párrafos mediante un desplegable que contenga 
+ los tamaños: Small, Medium y Large.
+ -->
+ <!DOCTYPE html>
+ <html lang="es">
+      <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title></title>
+          <!-- <link rel="stylesheet" href="style.css">    -->
+      </head>
+      <body>
+        <h2>Modificacion de tamaño de texto</h2>
+        <div id="contenedor">
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda odit similique incidunt?</p>
+            <p>Lorem ipsum dolor sit.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt ex quibusdam eveniet<br>ipsam laboriosam repudiandae ipsum nobis doloribus aliquam.</p>
+        </div>
+        <select id="size">
+            <option value="12px">Small</option>
+            <option value="30px">Medium</option>
+            <option value="50px">Large</option>   
+        </select>
+        <button onclick="cambiador()">Cambiar Tamaño</button>
+      </body>
+      <script>
+          function cambiador() {
+            let valor = document.getElementById("size");
+            let contenedor=document.getElementById("contenedor");
+            contenedor.style.fontSize=valor.value;
+            
+        }        
+      </script>
+ </html>
