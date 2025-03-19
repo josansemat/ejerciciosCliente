@@ -1,0 +1,45 @@
+<!-- Crea un documento HTML que contenga un cuadro de texto y dos botones de manera que permita añadir 
+ elementos de forma dinámica al DOM. Uno de los botones permitirá añadir elementos mediante insertAdjacentHTML 
+ y otro botón mediante createElement.
+ -->
+<!DOCTYPE html>
+<html lang="es">
+     <head>
+         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title></title>
+     </head>
+     <body>
+       <h2>Lista dinámica</h2>
+       <ul id="lista">
+       </ul>
+       <hr>
+       <label>Nuevo Texto</label><input type="text" id="nuevotxt"/></br>
+       <input type="button" onclick="añadirConInsertAdjacentHTML();" value="Añadir elto con insertAdjacentHTML" />
+       <input type="button" onclick="añadirConCreateElement();" value="Añadir elto con createElement" />
+       <script>
+           function añadirConInsertAdjacentHTML() {
+               // obtengo el elemento ul
+               var lista = document.getElementById("lista");   
+               //obtengo lo que quiero poner en la li
+               let texto = document.getElementById("nuevotxt").value;
+               // Inserto el HTML al final del contenido de lista
+               lista.insertAdjacentHTML("beforeend", "<li>" + texto + "</li>");
+           }
+
+           function añadirConCreateElement() {
+               // obtengo el elemento ul
+               var lista = document.getElementById("lista");
+               // creo el elemento li 
+               let nuevoLi = document.createElement("li");
+               // obtengo lo que quiero poner en la li
+               let texto = document.getElementById("nuevotxt").value;
+               // añado el texto al elemento li
+               nuevoLi.textContent = texto;
+               // añado el li a la lista
+               lista.appendChild(nuevoLi);
+               
+           }
+       </script>
+     </body>
+</html>

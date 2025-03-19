@@ -13,12 +13,12 @@
         <script>
             var index = 1;
             function addParagraph() {    
-                var div = document.getElementById("parrafos");       
-                let parrafo = document.createElement("p");
-                parrafo.innerHTML = "Párrafo número " + index++;
-                div.appendChild(parrafo);
-                let color=document.getElementById("txtColor");
-                div.style.color=color.value;
+                var div = document.getElementById("parrafos");     // obtengo el elemento div  
+                let parrafo = document.createElement("p");// creo el elemento p
+                parrafo.innerHTML = "Párrafo número " + index++;// añado el texto al elemento p
+                div.appendChild(parrafo);// añado el p al div
+                let color=document.getElementById("txtColor");// obtengo el color
+                div.style.color=color.value;// aplico el color al div
             }    
         </script>
         <div id="parrafos"></div>
