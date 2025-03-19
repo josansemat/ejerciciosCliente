@@ -1,0 +1,72 @@
+<!-- Prepara el ejercicio anterior para que se puedan intercambiar el primer y último elemento de la tabla. -->
+<!DOCTYPE html>
+<html lang="es">
+     <head>
+         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title></title>
+         <!-- <link rel="stylesheet" href="style.css">    -->
+     </head>
+     <body>
+    <label for="texto">Texto</label>
+    <input type="text" name="texto" id="texto">
+    <button onclick="addElement()">Insertar texto nuevo</button>
+    <button onclick="swap()">Intercambiar primer y último elemento</button>
+    <br>
+    <table id="table">
+        
+    </table>
+
+    <script>
+        var elementos = [];//creo un array vacío
+        var texto = document.getElementById("texto");//selecciono el input
+        var table = document.getElementById("table");//selecciono la tabla
+
+        function loadTable()//creo la funcion que crea la tabla con los botones
+        {
+            let html = "";//creo una variable vacía
+            for (let i = 0; i < elementos.length; i++) //recorro el array
+            {
+                //creo una fila con el elemento del array y tres botones
+                html += "<tr><td>" + elementos[i] + "</td>" +//añado el elemento del array
+                        //añado los botones con el evento onclick y el índice del array
+                        "<td>" + "<button onclick='copyUp(" + i + ")'>Copiar encima</button>" + "</td>" +
+                        "<td>" + "<button onclick='deleteElement(" + i + ")'>Borrar</button>" + "</td>" +
+                        "<td>" + "<button onclick='update(" + i + ")'>Actualizar</button>" + "</td>";            }
+            table.innerHTML = html;//añado el html a la tabla
+        }
+
+        function addElement()//funcion para añadir elementos al array
+        {
+            elementos.push(texto.value);//añado el valor del input en el array
+            loadTable();//llamo a la funcion que crea la tabla con los botones
+        }
+
+        function deleteElement(index)//funcion para borrar elementos del array
+        {
+            elementos.splice(index, 1);//borro el elemento del array el 1 es para borrar solo 1 elemento
+            loadTable();//llamo a la funcion que crea la tabla con los botones
+        }
+
+        function update(index)//funcion para actualizar elementos del array
+        {
+            elementos[index] = texto.value;//actualizo el valor del array con el valor del input
+            loadTable();//llamo a la funcion que crea la tabla con los botones
+        }
+
+        function copyUp(index)//funcion para copiar elementos del array
+        {
+            elementos.splice(index, 0, elementos[index]);//copio el elemento del array, el 0 es para no borrar ningún elemento
+            loadTable();//llamo a la funcion que crea la tabla con los botones
+        }
+        function swap(index) {//funcion para intercambiar el primer y último elemento del array
+            let temp = elementos[0];//creo una variable remporal para guardar el elemento 0
+            elementos[0] = elementos[elementos.length - 1];//al primer elemento le doy el valor del ultimo
+            elementos[elementos.length - 1] = temp;//al ultimo elemento le doy el valor temporal que es el primero
+            loadTable();//cargo la tabla
+        }
+
+        
+    </script>
+     </body>
+</html>
