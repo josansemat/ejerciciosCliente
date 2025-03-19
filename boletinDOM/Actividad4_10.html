@@ -11,6 +11,18 @@
           <link rel="stylesheet" href="style.css">   
       </head>
       <body>
-        
-      </body>
+        <div id="parrafos"></div>
+        <button onclick="addParrafo()">Añadir párrafo</button>
+    </body>
+    <script>
+        var index = 1;
+        var div = document.getElementById("parrafos");
+        function addParrafo()
+        {
+            let parrafo = document.createElement("p");
+            parrafo.innerHTML = "Párrafo número " + index++;
+            div.appendChild(parrafo);
+        }
+
+      </script>
  </html>
