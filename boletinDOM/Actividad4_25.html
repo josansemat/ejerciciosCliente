@@ -1,0 +1,45 @@
+<!-- Usando JavaScript debes construir dinámicamente una lista desplegable (control HTML select) a partir del array de 
+ strings [“Huelva”, “Sevilla”, “Córdoba”, “Jaén”, “Almería”, “Granada”, “Málaga”, “Cádiz”]. Cada option debe tener como 
+ value el nombre de la correspondiente provincia.
+Prepara también tu código para que cuando el usuario seleccione un elemento de la lista desplegable se muestre 
+la provincia seleccionada en un alert.
+ -->
+<!DOCTYPE html>
+<html lang="es">
+     <head>
+         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title></title>
+         <!-- <link rel="stylesheet" href="style.css">    -->
+     </head>
+     <body>
+            
+                <label for="provincias" >Provincias</label>
+                <select id="provincias" name="provincias">   
+                                   
+                </select>
+                <button onclick="poblar();">Poblar</button>
+
+                <script>
+                    let prov=[Sevilla,Malaga,Cordoba,Jaen,Granada,Huelva,Almeria,Cadiz];//creo el array de las provincias
+                    let select=document.getElementById("provincias");//selecciono el select
+                    function poblar(params) {
+                        for (let i = 0; i < prov.length; i++)//recorro el array
+                    {
+                        let option=document.createElement("option");//creo un option
+                        option.value=prov[i];//le añado el valor
+                        option.text=prov[i];//le añado el texto
+                        select.appendChild(option);//añado el option al select
+                    }
+                    }
+                    
+                    select.addEventListener("change",function(){//añado un evento al select
+                        alert(select.value);//muestro un alert con el valor del select
+                    });
+
+
+
+
+                </script>
+     </body>
+</html>
