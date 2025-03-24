@@ -14,29 +14,27 @@ la provincia seleccionada en un alert.
      </head>
      <body>
             
-                <label for="provincias" >Provincias</label>
-                <select id="provincias" name="provincias">   
-                                   
-                </select>
-                <button onclick="poblar();">Poblar</button>
+        <label for="provincias">Provincias:</label>
+        <select id="provincias"></select>
+        <input type="button" onclick="poblarProvincias();" value="Poblar">
+
 
                 <script>
-                    let prov=[Sevilla,Malaga,Cordoba,Jaen,Granada,Huelva,Almeria,Cadiz];//creo el array de las provincias
-                    let select=document.getElementById("provincias");//selecciono el select
-                    function poblar(params) {
-                        for (let i = 0; i < prov.length; i++)//recorro el array
-                    {
-                        let option=document.createElement("option");//creo un option
-                        option.value=prov[i];//le añado el valor
-                        option.text=prov[i];//le añado el texto
-                        select.appendChild(option);//añado el option al select
+                    function poblarProvincias(){
+                        var listado=document.getElementById('provincias');
+                        var provincias=["Huelva", "Sevilla", "Córdoba", "Jaén", "Almería", "Granada", "Málaga", "Cádiz"];
+                        for (var i=0; i < provincias.length ; i++){
+                            var elto=document.createElement('option');
+                            elto.value=provincias[i];
+                            elto.innerHTML=provincias[i];
+                            listado.appendChild(elto);
+                        }
                     }
-                    }
-                    
+
+                    var select = document.getElementById('provincias');
                     select.addEventListener("change",function(){//añado un evento al select
                         alert(select.value);//muestro un alert con el valor del select
                     });
-
 
 
 
