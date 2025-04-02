@@ -1,0 +1,6 @@
+Repasar del tema 3:
+
+Creación objetos con ES5
+Creación de objetos con ES6 (ECMAScript 2015) 
+Otras novedades introducidas con ES6 (ECMAScript 2015)
+Ejercicios sobre Objetos
