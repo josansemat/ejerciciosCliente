@@ -15,5 +15,185 @@ const PRODUCTOS = [
 
 ];
 
+// Variables globales
+let categoriaSeleccionada = null;
+let productoSeleccionado = null;
 
-// Escribe aquí tu código
+// Función para cargar las categorías
+function cargarCategorias() {
+    const categoriasContainer = document.getElementById('categorias');
+    categoriasContainer.innerHTML = '';
+    
+    CATEGORIAS.forEach(categoria => {
+        const divCategoria = document.createElement('div');
+        divCategoria.className = 'col';
+        
+        const h1 = document.createElement('h1');
+        
+        const span = document.createElement('span');
+        span.className = 'badge bg-info cursor-pointer';
+        span.textContent = categoria.nombre;
+        span.dataset.id = categoria.id;
+        span.addEventListener('click', () => seleccionarCategoria(categoria.id));
+        
+        h1.appendChild(span);
+        divCategoria.appendChild(h1);
+        categoriasContainer.appendChild(divCategoria);
+    });
+}
+
+// Función para seleccionar una categoría
+function seleccionarCategoria(categoriaId) {
+    categoriaSeleccionada = categoriaId;
+    const spans = document.querySelectorAll('#categorias span');
+    
+    spans.forEach(span => {
+        if (parseInt(span.dataset.id) === categoriaId) {
+            span.classList.replace('bg-info', 'bg-primary');
+        } else {
+            span.classList.replace('bg-primary', 'bg-info');
+        }
+    });
+    
+    cargarProductos();
+    limpiarCaracteristicas();
+}
+
+// Función para cargar los productos de la categoría seleccionada
+function cargarProductos() {
+    const productosContainer = document.getElementById('productos');
+    productosContainer.innerHTML = '';
+    
+    const productosFiltrados = PRODUCTOS.filter(producto => producto.categoria === categoriaSeleccionada);
+    
+    productosFiltrados.forEach(producto => {
+        const divProducto = document.createElement('div');
+        divProducto.className = 'card col m-2';
+        divProducto.style.width = '18rem';
+        
+        const img = document.createElement('img');
+        img.className = 'card-img-top';
+        img.src = 'images/' + producto.imagen;
+        img.alt = producto.nombre;
+        
+        const divCardBody = document.createElement('div');
+        divCardBody.className = 'card-body';
+        
+        const h5 = document.createElement('h5');
+        h5.className = 'card-title';
+        h5.textContent = producto.nombre;
+        
+        const p = document.createElement('p');
+        p.className = 'card-text';
+        p.textContent = producto.descripcion;
+        
+        const pPrecio = document.createElement('p');
+        pPrecio.className = 'card-text fw-bold';
+        pPrecio.textContent = `Precio: ${producto.precio.toFixed(2)} €`;
+        
+        const a = document.createElement('a');
+        a.className = 'btn btn-primary';
+        a.textContent = 'Características';
+        a.href = '#';
+        a.addEventListener('click', (e) => {
+            e.preventDefault();
+            mostrarCaracteristicas(producto.id);
+        });
+        
+        divCardBody.appendChild(h5);
+        divCardBody.appendChild(p);
+        divCardBody.appendChild(pPrecio);
+        divCardBody.appendChild(a);
+        
+        divProducto.appendChild(img);
+        divProducto.appendChild(divCardBody);
+        
+        productosContainer.appendChild(divProducto);
+    });
+}
+
+// Función para mostrar las características de un producto
+function mostrarCaracteristicas(productoId) {
+    productoSeleccionado = PRODUCTOS.find(producto => producto.id === productoId);
+    
+    if (!productoSeleccionado) return;
+    
+    const caracteristicasContainer = document.getElementById('caracteristicas');
+    caracteristicasContainer.innerHTML = '';
+    
+    // Crear el título del producto
+    const tituloLi = document.createElement('li');
+    tituloLi.className = 'list-group-item d-flex justify-content-between lh-sm bg-primary text-white';
+    const tituloH6 = document.createElement('h6');
+    tituloH6.className = 'my-0';
+    tituloH6.textContent = productoSeleccionado.nombre;
+    tituloLi.appendChild(tituloH6);
+    caracteristicasContainer.appendChild(tituloLi);
+    
+    // Añadir cada característica
+    productoSeleccionado.caracteristicas.forEach(caracteristica => {
+        const li = document.createElement('li');
+        li.className = 'list-group-item d-flex justify-content-between lh-sm';
+        
+        const h6 = document.createElement('h6');
+        h6.className = 'my-0';
+        h6.textContent = caracteristica;
+        
+        li.appendChild(h6);
+        caracteristicasContainer.appendChild(li);
+    });
+    
+    // Asegurar que el panel de características esté visible
+    const caracteristicasPanel = document.querySelector('.col-md-5.col-lg-4');
+    if (caracteristicasPanel) {
+        caracteristicasPanel.style.display = 'block';
+    }
+}
+
+// Función para limpiar las características
+function limpiarCaracteristicas() {
+    const caracteristicasContainer = document.getElementById('caracteristicas');
+    caracteristicasContainer.innerHTML = '';
+}
+
+// Inicialización cuando el DOM esté cargado
+document.addEventListener('DOMContentLoaded', () => {
+    // Crear estructura del DOM si no existe
+    const productosDiv = document.getElementById('productos');
+    const caracteristicasUl = document.getElementById('caracteristicas');
+    
+    // Asegurarnos de que la estructura está completa
+    if (!productosDiv.parentNode.parentNode.querySelector('.col-md-5.col-lg-4')) {
+        const rowDiv = productosDiv.parentNode.parentNode;
+        
+        // Crear el contenedor para las características si no existe
+        const caracteristicasContainer = document.createElement('div');
+        caracteristicasContainer.className = 'col-md-5 col-lg-4 order-md-last';
+        
+        const h4 = document.createElement('h4');
+        h4.className = 'd-flex justify-content-between align-items-center mb-3';
+        
+        const span = document.createElement('span');
+        span.className = 'text-primary';
+        span.textContent = 'Características';
+        
+        h4.appendChild(span);
+        caracteristicasContainer.appendChild(h4);
+        
+        // Crear la lista de características si no existe
+        if (!caracteristicasUl) {
+            const ul = document.createElement('ul');
+            ul.id = 'caracteristicas';
+            ul.className = 'list-group mb-3';
+            caracteristicasContainer.appendChild(ul);
+        } else {
+            caracteristicasContainer.appendChild(caracteristicasUl);
+        }
+        
+        rowDiv.appendChild(caracteristicasContainer);
+    }
+    
+    // Iniciar la aplicación
+    cargarCategorias();
+});
+
