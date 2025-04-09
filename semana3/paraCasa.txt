@@ -5,3 +5,6 @@ Repasar del tema 5:
 Eventos (distintas maneras de añadirlos, manejador de eventos compartido, rescatar información de los eventos)
 Formularios (controles HTML5, validaciones HTML5, rescatar datos de los controles HTML, validación a medida mediante setCustomValidity)
 Expresiones regulares (caracteres opcionales, cuantificadores, capturing, match, test, search, replace, split, exec, etc.)
+
+
+tema 3 en funciones y testeos en el apartado de testeos te metes en resumenes de los principales matches de jasmine y estudiarlo
