@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <title>Formularios</title>
+  <script>
+    let formulario;
+    function iniciar() {
+      let boton = document.getElementById("enviar");
+      boton.addEventListener('click', validaPasswords);
+    }
+
+
+    function validaPasswords() {
+      if (document.getElementById('mipassword1').value == document.getElementById('mipassword2').value) {
+        document.getElementById('mipassword2').setCustomValidity(""); // Al ejecutar este método con "" estamos dando como válido el control
+      }
+      else {
+        document.getElementById('mipassword2').setCustomValidity("No coincide con el anterior"); // Al ejecutar este método con un texto estamos dando como inválido el control
+      }
+    }
+
+
+
+    addEventListener("load", iniciar);
+  </script>
+</head>
+
+<body>
+  <section>
+    <form name="informacion" method="get" action="procesar.php">
+      <label for="apodo">Apodo: </label>
+      <input pattern="[A-Za-z]{3,}" name="apodo" id="apodo" maxlength="10" required><br>
+      <label for="miemail">Email: </label>
+      <input type="email" name="miemail" id="miemail" required><br>
+      <label for="password1">Clave: </label>
+      <input type="password" name="mipassword1" id="mipassword1" required minlength="8"><br>
+      <label for="password2">Clave(repetir): </label>
+      <input type="password" name="mipassword2" id="mipassword2" required minlength="8"><br>
+      <input type="submit" id="enviar" value="Enviar">
+    </form>
+  </section>
+</body>
+
+</html>

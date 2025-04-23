@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+     <head>
+         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title></title>
+         <!-- <link rel="stylesheet" href="style.css">    -->
+     </head>
+     <body>
+         <input type="button" id="boton1" value="Boton1">
+         <input type="button" id="boton2" value="Boton2">
+         <input type="button" id="boton3" value="Boton3">
+         <select name="aulas" id="aulas">
+            <option value="1">9A</option>
+            <option value="2">9B</option>
+            <option value="3">9C</option>
+         </select>
+         <input type="text" name="nombre" id="nombre">
+
+
+<script>
+    function iniciar(){
+        document.querySelector('#boton1').addEventListener('click',miManejador);
+        document.querySelector('#boton2').addEventListener('click',miManejador);
+        document.querySelector('#boton3').addEventListener('click',miManejador);
+        document.querySelector('#aulas').addEventListener('change',miManejador);//cuando cambia el select pues hace el alert
+        document.querySelector('#nombre').addEventListener('keydown',miManejador);
+    }
+    // manejador de eventos unico
+    function miManejador(evt) {
+        if(evt.type=='keydown') console.log(evt.keyCode)
+        alert(evt.target.id) //hace referencia al id del objeto
+        alert(evt.type)//hace refenrecia a lo que hace el objeto que si blur o click etc...
+        alert('Hola')
+    }
+
+    addEventListener('load', iniciar);
+
+
+</script>
+
+     </body>
+</html>
