@@ -1,1 +1,1 @@
-Pasar las cosas del servidor a aqui ya que en esta carpeta no se puede
+Pasar las cosas del servidor a aqui ya que en esta carpeta no se puede, hola
