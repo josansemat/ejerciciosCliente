@@ -17,7 +17,7 @@ $vec=[]; // Array en el que se almacenarán los objetos Periferico
 
 $consulta = $conexion->query("SELECT id, id_categoria, nombre, precio, descripcion, imagen, caracteristicas FROM productos");
 while ($reg = $consulta->fetchObject()) {
-  $vec[] = new Periferico($reg->id,$reg->id_categoria,$reg->nombre,$reg->precio,$reg->descripcion,$reg->imagen,$reg->caracteristicas);
+  $vec[] = new Productos($reg->id,$reg->id_categoria,$reg->nombre,$reg->precio,$reg->descripcion,$reg->imagen,$reg->caracteristicas);
 }
 
 // $vec contiene un array de objetos Periferico
