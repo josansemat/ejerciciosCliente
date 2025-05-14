@@ -1,0 +1,16 @@
+Debes crear una gráfica usando algunas de las librerías vistas en clase. La gráfica deberá mostrar algún tipo de información como las lluvias de un año, las ventas, porcentaje de votos de elecciones electorales, etc (no es necesario que los datos sean reales).
+
+ Los datos que se emplearán para la gráfica deben estar almacenados en una base de datos del servidor ruix. En el servidor debes implementar una API que devuelva los datos en XML o JSON. El frontend debe solicitar los datos al servidor mediante AJAX.
+
+Debes desplegar tu aplicación web en la máquina ruix.
+
+Debes entregar:
+
+El código fuente
+La url del despliegue en ruix
+El fichero .sql exportado de tu BD (incluyendo tablas y registros)
+Documento donde expliques:
+Qué estructura tiene la base de datos
+Qué tipo datos devuelve tu API (JSON, XML, ect)
+La url de tu web en la máquina ruix
+Una imagen de captura de tu web

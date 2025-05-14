@@ -15,7 +15,8 @@ $xml = new SimpleXMLElement($xmlstr);
 
 if ($codigo) {
     $consulta = $conexion->prepare("SELECT id, descripcion FROM partes WHERE id = $codigo");
-    $consulta->execute([$codigo]);
+    $consulta = $conexion->prepare("SELECT id, descripcion FROM partes WHERE id = :id");
+    $consulta->execute(['id' => $codigo]);
     $resultado = $consulta->fetch();
 
     if ($resultado) {
