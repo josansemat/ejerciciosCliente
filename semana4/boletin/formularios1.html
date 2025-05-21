@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+     <head>
+         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title>Registro de Pacientes</title>
+     </head>
+     <body>
+        
+        <form action="procesa.php" method="POST" id="formularioPaciente">
+            <div>
+                <label for="nombre">Nombre: </label>
+                <input type="text" name="nombre" id="nombre" maxlength="30" required>
+            </div>
+            
+            <div>
+                <label>Sexo:</label>
+                <input type="radio" id="hombre" name="sexo" value="hombre" required>
+                <label for="hombre">Hombre</label>
+                <input type="radio" id="mujer" name="sexo" value="mujer">
+                <label for="mujer">Mujer</label>
+            </div>
+            
+            <div>
+                <label for="altura">Altura (cm): </label>
+                <input type="number" name="altura" id="altura" min="50" max="210" required>
+            </div>
+            
+            <div>
+                <label for="edad">Fecha de nacimiento: </label>
+                <input type="date" name="edad" id="edad" required>
+            </div>
+            
+            <div>
+                <label for="semana">Semana Preferente: </label>
+                <input type="week" name="semana" id="semana">
+            </div>
+            
+            <div>
+                <label for="fumador">Fumador: </label>
+                <input type="checkbox" name="esFumador" id="fumador">
+                <select name="cigarrillos" id="fumadorCantidad" disabled required>
+                    <option value="">Seleccionar</option>
+                    <option value="1-5">1-5</option>
+                    <option value="6-10">6-10</option>
+                    <option value="mas10">Más de 10</option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="observaciones">Observaciones:</label>
+                <textarea name="observaciones" id="observaciones" rows="4" cols="50"></textarea>
+            </div>
+            
+            <div>
+                <input type="reset" value="Borrar">
+                <input type="submit" value="Enviar">
+            </div>
+        </form>
+
+        <script>
+            // Control del checkbox fumador y su lista desplegable asociada
+            document.getElementById('fumador').addEventListener('change', function() {
+                const selectCigarrillos = document.getElementById('fumadorCantidad');
+                selectCigarrillos.disabled = !this.checked;
+                
+                // Si está marcado, el select es requerido; si no, no es requerido
+                if (this.checked) {
+                    selectCigarrillos.setAttribute('required', '');
+                } else {
+                    selectCigarrillos.removeAttribute('required');
+                    selectCigarrillos.value = ''; // Resetear la selección
+                }
+            });
+            
+            // Validar que el usuario sea mayor de edad usando setCustomValidity
+            const campoEdad = document.getElementById('edad');
+            
+            function validarEdad() {
+                const fechaNacimiento = new Date(campoEdad.value);
+                const hoy = new Date();
+                
+                let edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
+                const m = hoy.getMonth() - fechaNacimiento.getMonth();
+                
+                if (m < 0 || (m === 0 && hoy.getDate() < fechaNacimiento.getDate())) {
+                    edad--;
+                }
+                
+                if (edad < 18) {
+                    campoEdad.setCustomValidity('El paciente debe ser mayor de edad (18 años o más).');
+                } else {
+                    campoEdad.setCustomValidity(''); // Validación correcta
+                }
+            }
+            
+            // Asignar validación al cambiar la fecha y al enviar el formulario
+            campoEdad.addEventListener('change', validarEdad);
+            campoEdad.addEventListener('input', validarEdad);
+            
+           
+            
+        </script>
+     </body>
+</html>
