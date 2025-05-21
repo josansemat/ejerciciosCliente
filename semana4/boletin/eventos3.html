@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+     <head>
+         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title>Lista desplegable</title>
+     </head>
+     <body>
+        <!-- 1.3. Actividad 5a3 (activ_event_5a3.html) -->
+<!-- Crea una lista desplegable que contenga las localidades "Utrera", "Los Palacios" y "Dos Hermanas".
+  Cuando el usuario seleccione una localidad debe mostrarse junto al control la localidad que ha seleccionado en el desplegable. -->
+        <select name="lista" id="lista">
+            <option disabled selected value="ejemplo">Selecciona una</option>
+        </select>
+        
+
+        <script>
+            //creo el array de las localidades
+            let localidades=['Utrera','Los Palacios','Dos Hermanas'];
+            //obtengo el id del select
+            let lista=document.getElementById('lista');
+            
+            // Crear el span desde JavaScript usando createElement
+            let spanResultado = document.createElement("span");
+            spanResultado.id = "localidadSeleccionada";
+            
+            // Crear un nodo de texto inicialmente vacío
+            let textoSpan = document.createTextNode("");
+            
+            // Añadir el nodo de texto al span
+            spanResultado.appendChild(textoSpan);
+            
+            // Insertar el span después del select (como hermano)
+            lista.parentElement.insertBefore(spanResultado, lista.nextSibling);
+            
+            // Generar las opciones del desplegable
+            for(let i = 0; i < localidades.length; i++) {
+                let opcion = document.createElement('option');
+                opcion.value = localidades[i];
+                opcion.textContent = localidades[i];
+                lista.appendChild(opcion);
+            }
+            
+            // Añadir evento change para mostrar la localidad seleccionada
+            lista.addEventListener('change', function() {
+                // Eliminar el texto anterior del span
+                spanResultado.innerHTML = "";
+                // Crear un nuevo texto con el valor seleccionado
+                let nuevoTexto = document.createTextNode(" La localidad seleccionada es: " + this.value);
+                // Añadirlo al span
+                spanResultado.appendChild(nuevoTexto);
+            });
+        </script>
+     </body>
+</html>
