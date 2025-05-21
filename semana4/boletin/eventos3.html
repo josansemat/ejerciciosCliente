@@ -42,13 +42,19 @@
             }
             
             // Añadir evento change para mostrar la localidad seleccionada
+            // lista.addEventListener('change', function() {
+            //     // Eliminar el texto anterior del span
+            //     spanResultado.innerHTML = "";
+            //     // Crear un nuevo texto con el valor seleccionado
+            //     let nuevoTexto = document.createTextNode(" La localidad seleccionada es: " + this.value);
+            //     // Añadirlo al span
+            //     spanResultado.appendChild(nuevoTexto);
+            // });
+           
+            // Alternativa al evento change
             lista.addEventListener('change', function() {
-                // Eliminar el texto anterior del span
-                spanResultado.innerHTML = "";
-                // Crear un nuevo texto con el valor seleccionado
-                let nuevoTexto = document.createTextNode(" La localidad seleccionada es: " + this.value);
-                // Añadirlo al span
-                spanResultado.appendChild(nuevoTexto);
+                // Actualizar directamente el nodo de texto existente
+                textoSpan.nodeValue = " La localidad seleccionada es: " + this.value;
             });
         </script>
      </body>
