@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+    <!-- Contenedor donde volcaré toda la información-->
+    <table id="contenedor" border="1"></table>
+    
+    <script>
+        /* Ejercicio 1.1 */
+var encabezados = ["Horas", "Previsión", "Viento", "Velocidad","lluvias"];
+var datos = [
+    {hora: "19:00", prevision:{temperatura: "33º", icono:"dia.png"}, viento: "oeste.png", velociadad: "15 km/h", lluvias: "0mm"},
+    {hora: "20:00", prevision:{temperatura: "30º", icono:"dia.png"}, viento: "norte.png", velociadad: "5 km/h", lluvias: "10mm"},
+    {hora: "21:00", prevision:{temperatura: "28º", icono:"noche.png"}, viento: "sur.png", velociadad: "0 km/h", lluvias: "5mm"}
+];
+        
+// Capturamos el div por su id
+var tabla = document.getElementById("contenedor");
+for (let i = 0; i < encabezados.length; i++) {
+
+    //meto los datos en un array
+    var encabezado = encabezados[i];
+
+    //creo las cabeceras
+    var cabecera = document.createElement("th");
+
+    //creo el contenido
+    var contenido = document.createTextNode(encabezado);
+    
+    //añado el contenido a las cabeceras
+    cabecera.appendChild(contenido);
+    tabla.appendChild(cabecera);
+}
+
+for (var i=0; i < datos.length; i++) {
+
+    //meto los datos en un array
+    var dato = datos[i];
+    var ico = true;
+
+    //creo las filas y columnas
+        var fila1 = document.createElement("tr");
+        var columna1 = document.createElement("td");
+        var columna2 = document.createElement("td");
+        var columna3 = document.createElement("td");
+        var columna4 = document.createElement("td");
+        var columna5 = document.createElement("td");
+
+    //añado el contenido a cada columna y fila
+    var hora = document.createTextNode(dato.hora);
+    var prevision = document.createTextNode(dato.prevision.temperatura);
+    var icono = document.createTextNode(dato.prevision.icono);
+    var viento = document.createTextNode(dato.viento);
+    var velociadad = document.createTextNode(dato.velociadad);
+    var lluvia = document.createTextNode(dato.lluvias);
+    
+        columna1.appendChild(hora);
+        columna2.appendChild(prevision);
+        columna2.appendChild(icono);
+        columna3.appendChild(viento);
+        columna4.appendChild(velociadad);
+        columna5.appendChild(lluvia);
+        fila1.appendChild(columna1);
+        fila1.appendChild(columna2);
+        fila1.appendChild(columna3);
+        fila1.appendChild(columna4);
+        fila1.appendChild(columna5);
+        tabla.appendChild(fila1);
+    
+}
+    </script>
+</body>
+</html>
