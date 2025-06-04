@@ -1,0 +1,31 @@
+<!-- 3.1. Actividad 5c1 (activ_5c1.html)
+Crea una función llamada validaCP que valide si un código postal es válido, retornando true en caso afirmativo.
+ El código postal podrá tener opcionalmente espacios por delante o por detrás. Haz un testeo de la función.
+Crea una función llamada extraeCPs que tenga como argumento de entrada una frase que contenga códigos postales.
+ La función debe devolver un array con todos los códigos postales encontrados. Haz un testeo de la función.
+Crea una función llamada sustituyeCPs que tenga como argumento de entrada una frase que contenga códigos postales.
+ La función debe devolver la frase de entrada sustituyendo todos los códigos postales por la palabra C.P. Haz un testeo de la función. -->
+
+ <script>
+    function validaCP(cp) {
+    // Esta expresión regular permite espacios opcionales al principio y al final
+    // y exige exactamente 5 dígitos en el medio
+        let patronCP = /^\s*\d{5}\s*$/;
+        return patronCP.test(cp);
+    }
+    function extraeCPs(frase) {
+    // Usamos una expresión regular con la bandera 'g' (global) para encontrar todas las ocurrencias
+    // \b es un límite de palabra para asegurar que los 5 dígitos estén separados
+    let patronCP = /\b\d{5}\b/g;
+    
+    // El método match devuelve un array con todas las coincidencias
+    // Si no hay coincidencias, devuelve null, así que manejamos ese caso
+    let coincidencias = frase.match(patronCP);
+    
+    // Devolvemos el array de coincidencias o un array vacío si no hay coincidencias
+    return coincidencias || [];
+}
+
+
+
+ </script>
