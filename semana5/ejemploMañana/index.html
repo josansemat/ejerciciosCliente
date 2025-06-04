@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+  <script src="assets/js/color-modes.js"></script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>Examen AJAX películas feb 2025</title>
+  <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/blog.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <header class="border-bottom lh-1 py-3">
+      <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+        <div class="col-lg-6 px-0">
+          <h1 class="display-8 fst-italic">Exam. AJAX Películas Feb 2025</h1>
+        </div>
+      </div>
+    </header>
+
+    <main class="container mt-2">
+      <div class="row g-5">
+        <div class="col-md-8">
+          <article class="blog-post">
+            <div class="row">
+              <label for="inputGenero"><strong>Géneros</strong></label>
+              <select class="form-select" name="inputGenero" id="inputGenero">
+
+<!-- => AQUÍ VAN LOS GÉNEROS DE PELÍCULAS (control inputGenero) -->
+                <option value="todos">Todos</option>
+                
+<!-- FIN DE LOS GÉNEROS DE PELÍCULAS -->
+
+              </select>
+            </div>
+            <div class="row mt-4">
+              <h3>Listado de películas</h3>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Título</th>
+                    <th>Año</th>
+                    <th>Género</th>
+                    <th>Portada</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="inputTabla">
+
+<!-- => AQUÍ VAN LAS PELICULAS (control inputTabla) -->
+                
+<!-- FIN DE LAS PELICULAS-->
+
+                </tbody>
+              </table>
+            </div>
+
+          </article>
+        </div>
+
+        <div class="col-md-4">
+          <div class="position-sticky" style="top: 2rem;">
+            <div class="p-4 mb-3 bg-body-tertiary rounded">
+              <h4 class="fst-italic">Trama:</h4>
+
+<!-- => AQUÍ VA LA TRAMA (control inputTrama)-->
+              <p id="inputTrama"></p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  </main>
+
+  <footer class="py-5 text-center text-body-secondary bg-body-tertiary">
+    <p>IES Ruiz Gijón Feb 2025</p>
+  </footer>
+  <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="funciones.js"></script>
+</body>
+
+<style>
+  button{
+    background-color: rgb(255, 196, 0);
+    border: none;
+    padding: 7%;
+    border-radius: 5px;
+  }
+
+  img{
+    width: 150px;
+  }
+</style>
+
+</html>
